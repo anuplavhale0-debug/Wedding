@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Akshay ❤️ Rupali Wedding</title>
+
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      text-align: center;
+      background: linear-gradient(to right, #fff5e6, #ffe6cc);
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #fff;
+      border: 3px solid #d4af37;
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 420px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #b30000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      background: #b30000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .map-btn {
+      background: green;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    /* 🌸 Falling Flowers */
+    .flower {
+      position: fixed;
+      top: -10px;
+      color: pink;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎶 Music -->
+<audio id="bgmusic" loop>
+  <source src="YOUR_MUSIC_LINK.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>💍 शुभ विवाह निमंत्रण 💍</h1>
+
+  <!-- STEP 1 -->
+  <div id="step1">
+    <p>नमस्कार 🙏</p>
+    <p>आपल्यासाठी एक आनंदाची बातमी आहे...</p>
+    <button onclick="startInvite()">पुढे चला 💌</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="hidden">
+    <p>👀 लग्न कोणाचे आहे?</p>
+    <button onclick="nextStep(3)">पहा 😍</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="hidden">
+    <p>💖 <b>Akshay Lavhale</b><br>&<br>💖 <b>Rupali Punse</b></p>
+    <button onclick="nextStep(4)">पुढे ➡️</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="step4" class="hidden">
+    <p>📅 कधी आहे?</p>
+    <button onclick="nextStep(5)">सांगा 😄</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div id="step5" class="hidden">
+    <p>📅 10 May 2026<br>⏰ 10:00 AM</p>
+    <button onclick="nextStep(6)">पुढे ➡️</button>
+  </div>
+
+  <!-- STEP 6 -->
+  <div id="step6" class="hidden">
+    <p>📍 कुठे आहे?</p>
+    <button onclick="nextStep(7)">पहा 😍</button>
+  </div>
+
+  <!-- STEP 7 -->
+  <div id="step7" class="hidden">
+    <p>Kshitij Palace,<br>Near Rajput Hotel,<br>Ring Road, Amravati</p>
+
+    <a href="https://www.google.com/maps/search/?api=1&query=Kshitij+Palace+Near+Rajput+Hotel+Ring+Road+Amravati" target="_blank">
+      <button class="map-btn">📍 लोकेशन पहा</button>
+    </a>
+
+    <button onclick="nextStep(8)">पुढे 🎥</button>
+  </div>
+
+  <!-- STEP 8: VIDEO -->
+  <div id="step8" class="hidden">
+    <p>🎥 खास आमंत्रण</p>
+
+    <video controls>
+      <source src="YOUR_VIDEO_LINK.mp4" type="video/mp4">
+    </video>
+
+    <button onclick="nextStep(9)">शेवट 💖</button>
+  </div>
+
+  <!-- FINAL -->
+  <div id="step9" class="hidden">
+    <p>आपली उपस्थिती आम्हाला आनंद देईल 💕</p>
+    <p>आपण जरूर उपस्थित राहा 🙏</p>
+  </div>
+
+</div>
+
+<script>
+function startInvite() {
+  document.getElementById("bgmusic").play();
+  nextStep(2);
+}
+
+/* Steps */
+function nextStep(step) {
+  for (let i = 1; i <= 9; i++) {
+    document.getElementById("step" + i).style.display = "none";
+  }
+  document.getElementById("step" + step).style.display = "block";
+}
+
+/* 🌸 Flower Animation */
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerHTML = "🌸";
+  flower.style.left = Math.random() * window.innerWidth + "px";
+  flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 8000);
+}
+
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
